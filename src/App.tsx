@@ -1,43 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
+import APIPlayground from './APIPlayground/APIPlayground';
 
-const baseUrl: string = "http://localhost:3005";
-
-interface ITitle {
-  title: string
-}
-
-class App extends Component<{}, ITitle> {
-  
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      title: ""
-    }
-  }
-
-  handleClick = () => {
-    fetch(`${baseUrl}/api/book/random-title`).then(res => {
-      return res.json();
-    }).then(res => {
-      console.log(res.title);
-      this.setState({
-        title: res.title
-      });
-    }).catch(err => {
-      console.log(err);
-    });
-  }
+class App extends Component<any, any> {
 
   render() {
     return (
-      <div>
-        <header className="app-header">
-          LELUM POLELUM
-        </header>
-        <button onClick={this.handleClick}>random title from db!</button>
-        <p>{this.state.title}</p>
-      </div>
+      <section className="app">
+        <nav>
+          <ul className="nav-menu">
+              <li className="nav-elem">
+                  <span className="nav-link">Search for books</span>
+              </li>
+              <li className="nav-elem">
+                  <span className="nav-link">Create a book</span>
+              </li>
+          </ul>    
+        </nav>
+        <APIPlayground />
+      </section>
     );
   }
 }
