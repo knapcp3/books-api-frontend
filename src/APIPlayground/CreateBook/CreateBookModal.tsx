@@ -1,5 +1,4 @@
 import { Component } from "react";
-// import React from "react";
 import { createPortal } from "react-dom";
 
 const modalRoot: HTMLElement = document.getElementById("modal");

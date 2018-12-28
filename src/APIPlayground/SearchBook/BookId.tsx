@@ -1,32 +1,27 @@
-import React, { Component } from 'react';
-import Book from '../Book';
-  
-class BookId extends Component<any, any> {
+import React, { Component } from "react";
+import Book from "../Book";
 
-    render() {
-        return (
-            <div className="flex-hor">
-                <div>
-                    <input 
-                        onChange={this.props.onChangeBookFromId}
-                        value={this.props.id}
-                        type="number"
-                        min="1"
-                        max="10"
-                    />
-                    <button 
-                        type="submit"
-                        onClick={this.props.handleBookFromIdClick}
-                    >
-                        search with book id
-                    </button>
-                </div>
-                <Book 
-                    book={this.props.book}
-                />
-            </div>
-        );
-    }
+class BookId extends Component<any, any> {
+  render() {
+    const { onChangeBookFromId, handleBookFromIdClick, book } = this.props;
+    return (
+      <div className="flex-hor">
+        <div>
+          <input
+            onChange={onChangeBookFromId}
+            value={this.props.id}
+            type="number"
+            min="1"
+            max="10"
+          />
+          <button type="submit" onClick={handleBookFromIdClick}>
+            search with book id
+          </button>
+        </div>
+        {book && <Book book={book} />}
+      </div>
+    );
+  }
 }
 
 export default BookId;

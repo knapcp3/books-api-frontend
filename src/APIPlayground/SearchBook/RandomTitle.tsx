@@ -6,7 +6,7 @@ class RandomTitle extends Component<IRandomTitleProps, any> {
     return (
       <div className="flex-hor">
         <button onClick={this.props.handleRandomTitleClick}>
-          random title from db!
+          random title from db
         </button>
         <div>{this.props.randomTitle}</div>
       </div>

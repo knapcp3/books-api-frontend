@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import RandomTitle from "./RandomTitle";
+import BookParams from "./BookParams";
 import BookId from "./BookId";
 import axios from "axios";
 import config from "../../config";
@@ -30,9 +31,21 @@ class CreateBook extends Component<any, ISearchBookState> {
     this.fetchBookFromId(id);
   };
 
+  // handleBookFromParamsClick = () => {
+  //   console.log('params');
+  //   // const id = +this.state.bookIdValue;
+  //   // this.fetchBookFromId(id);
+  // };
+
   onChangeBookFromId = (e: any) => {
     this.setState({
       bookIdValue: e.target.value
+    });
+  };
+
+  onChangeBookFromParams = (e: any) => {
+    this.setState({
+      bookParamsValue: e.target.value
     });
   };
 
@@ -60,7 +73,6 @@ class CreateBook extends Component<any, ISearchBookState> {
     axios
       .get(`${config.baseUrl}/api/book/${id}`)
       .then(res => {
-        console.log(res);
         if (res.status > 400) throw new Error("Error Response From Server");
         return res.data;
       })
@@ -78,17 +90,30 @@ class CreateBook extends Component<any, ISearchBookState> {
   }
 
   render() {
+    const {
+      bookFromParams,
+      bookParamsValue,
+      randomTitle,
+      bookFromId,
+      bookIdValue
+    } = this.state;
     return (
       <div className="m-card">
         <RandomTitle
-          randomTitle={this.state.randomTitle}
+          randomTitle={randomTitle}
           handleRandomTitleClick={this.handleRandomTitleClick}
         />
         <BookId
-          book={this.state.bookFromId}
+          book={bookFromId}
           handleBookFromIdClick={this.handleBookFromIdClick}
-          id={this.state.bookIdValue}
+          id={bookIdValue}
           onChangeBookFromId={this.onChangeBookFromId}
+        />
+        <BookParams
+          book={bookFromParams}
+          param={bookParamsValue}
+          onChangeBookFromParams={this.onChangeBookFromParams}
+          // handleBookFromParamsClick={this.handleBookFromParamsClick}
         />
       </div>
     );
