@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import IRandomTitleProps from './../models/IRandomTitleProps';
+import IRandomTitleProps from '../../models/IRandomTitleProps';
 
 class RandomTitle extends Component<IRandomTitleProps, any> {
 
