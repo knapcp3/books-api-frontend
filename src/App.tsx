@@ -1,14 +1,18 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import Navigation from "./Navigation";
+import "./styles/App.css";
+import APIPlayground from "./APIPlayground/APIPlayground";
 
-class App extends Component {
+class App extends Component<any, any> {
   render() {
     return (
-      <div>
-        <header className="app-header">
-          LELUM POLELUM
-        </header>
-      </div>
+      <Router>
+        <section className="app-wrapper">
+          <Navigation />
+          <APIPlayground />
+        </section>
+      </Router>
     );
   }
 }
