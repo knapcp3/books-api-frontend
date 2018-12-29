@@ -14,9 +14,9 @@ class BookParams extends Component<any, any> {
   }
 
   componentDidMount() {
-    this.props.searchService.getResults().subscribe((books: IBook[]) => {
+    this.props.searchService.getResults().subscribe((b: any) => {
       this.setState({
-        books: books
+        books: b.data || []
       });
     });
   }

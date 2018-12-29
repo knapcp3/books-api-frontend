@@ -1,4 +1,4 @@
-// import axios, { AxiosPromise } from "axios";
+import axios from "axios";
 import config from "./../config";
 import { from, of } from "rxjs";
 import { Subject, Observable } from "rxjs";
@@ -23,9 +23,8 @@ export default class SearchBookService {
       return of([]);
     }
 
-    const promise: any = fetch(
-      `${config.baseUrl}/api/book/?param=${term}`
-    ).then(res => res.json());
+    const promise: any = axios.get(`${config.baseUrl}/api/book/?param=${term}`);
+    // .then(res => res.data);
 
     return from(promise);
   }
