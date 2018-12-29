@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Book from "./../Book";
-import { IBook } from "./../../models/API/Book.model";
-import { SearchConsumer } from "./../../context/SearchContext";
+import Book from "../../Book";
+import { IBook } from "../../../models/API/Book.model";
+import { SearchConsumer } from "../../../context/SearchContext";
 
 class BookParams extends Component<any, any> {
   constructor(props: any) {

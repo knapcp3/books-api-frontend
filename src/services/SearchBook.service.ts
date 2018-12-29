@@ -22,10 +22,7 @@ export default class SearchBookService {
     if (!term.trim()) {
       return of([]);
     }
-
     const promise: any = axios.get(`${config.baseUrl}/api/book/?param=${term}`);
-    // .then(res => res.data);
-
     return from(promise);
   }
 
