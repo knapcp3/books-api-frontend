@@ -1,11 +1,9 @@
-
 .app-wrapper {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   color: white;
 }
 
@@ -35,7 +33,6 @@ header {
 }
 
 .main-nav {
-  list-style-type: none; 
   display: flex;
   flex-direction: row;
   width: 400px;
@@ -43,7 +40,6 @@ header {
 }
 
 .nav-link {
-  text-decoration: none;
   color: rgb(250, 244, 237);
 }
 
@@ -51,4 +47,27 @@ button {
   cursor: pointer;
 }
 
+ul {
+  list-style-type: none;
+}
 
+li, .nav-link {
+  text-decoration: none;
+}
+
+/* search filter */
+
+.search-filter-link:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.search-filter-link {
+  padding: 3px;
+}
+
+.search-filter-list {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  padding: 0px;
+  margin: 0px;
+}

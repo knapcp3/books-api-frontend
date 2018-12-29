@@ -13,13 +13,12 @@ class CreateBook extends Component<any, ISearchBookState> {
       randomTitle: "",
       bookFromId: undefined,
       bookIdValue: "1",
-      bookFromParams: undefined,
-      bookParamsValue: ""
     };
   }
 
   componentDidMount() {
-    this.fetchBookFromId(1);
+    this.fetchBookFromId(+this.state.bookIdValue);
+    this.fetchRandomTitle();
   }
 
   handleRandomTitleClick = () => {
@@ -31,21 +30,9 @@ class CreateBook extends Component<any, ISearchBookState> {
     this.fetchBookFromId(id);
   };
 
-  // handleBookFromParamsClick = () => {
-  //   console.log('params');
-  //   // const id = +this.state.bookIdValue;
-  //   // this.fetchBookFromId(id);
-  // };
-
   onChangeBookFromId = (e: any) => {
     this.setState({
       bookIdValue: e.target.value
-    });
-  };
-
-  onChangeBookFromParams = (e: any) => {
-    this.setState({
-      bookParamsValue: e.target.value
     });
   };
 
@@ -83,7 +70,7 @@ class CreateBook extends Component<any, ISearchBookState> {
       })
       .catch(err => {
         this.setState({
-          bookFromId: undefined
+          bookFromId: null
         });
         console.log(err);
       });
@@ -91,11 +78,9 @@ class CreateBook extends Component<any, ISearchBookState> {
 
   render() {
     const {
-      bookFromParams,
-      bookParamsValue,
       randomTitle,
+      bookIdValue,
       bookFromId,
-      bookIdValue
     } = this.state;
     return (
       <div className="m-card">
@@ -105,14 +90,11 @@ class CreateBook extends Component<any, ISearchBookState> {
         />
         <BookId
           book={bookFromId}
+          bookIdValue={bookIdValue}
           handleBookFromIdClick={this.handleBookFromIdClick}
-          id={bookIdValue}
           onChangeBookFromId={this.onChangeBookFromId}
         />
         <BookParams
-          book={bookFromParams}
-          param={bookParamsValue}
-          onChangeBookFromParams={this.onChangeBookFromParams}
           // handleBookFromParamsClick={this.handleBookFromParamsClick}
         />
       </div>

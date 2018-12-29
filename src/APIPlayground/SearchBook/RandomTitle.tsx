@@ -5,10 +5,12 @@ class RandomTitle extends Component<IRandomTitleProps, any> {
   render() {
     return (
       <div className="flex-hor">
-        <button onClick={this.props.handleRandomTitleClick}>
-          random title from db
-        </button>
-        <div>{this.props.randomTitle}</div>
+        <section>
+          <button onClick={this.props.handleRandomTitleClick}>
+            random title from db
+          </button>
+        </section>
+        <section>{this.props.randomTitle}</section>
       </div>
     );
   }
