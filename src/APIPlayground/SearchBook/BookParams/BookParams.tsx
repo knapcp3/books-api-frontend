@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Book from "../../Book";
-import { IBook } from "./../../../models/API/Book.model";
+// import { IBook } from "./../../../models/API/Book.model";
 import { SearchConsumer } from "../../../context/SearchContext";
 import SearchFilter from "./SearchFilter";
 
@@ -8,35 +8,25 @@ class BookParams extends Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      book: undefined,
-      books: [],
+      book: undefined
     };
   }
 
-  handleBookSearchFilterClick = (e: any) => {
+  handleSelectedValue = (value: any) => {
     this.setState({
-      book: this.state.books[e.target.dataset.index],
-      books: []
+      book: value
     });
   };
 
-  handleBooksChange = (results: IBook[]) => {
-    this.setState({
-      books: results
-    });
-  }
-
   render() {
-    const { book, books } = this.state;
+    const { book } = this.state;
     const { searchService } = this.props;
 
     return (
       <div className="flex-hor">
         <SearchFilter
           searchService={searchService}
-          handleSearchFilterClick={this.handleBookSearchFilterClick}
-          handleResChange={this.handleBooksChange}
-          results={books}
+          handleSelectedValue={this.handleSelectedValue}
         />
         <div>{book !== undefined && <Book book={book} />}</div>
       </div>

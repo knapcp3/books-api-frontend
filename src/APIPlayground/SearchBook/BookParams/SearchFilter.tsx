@@ -1,20 +1,22 @@
 import React, { Component } from "react";
+import ISearchFilterProps from "./../../../models/ISearchFilterProps";
 
-class SearchFilter extends Component<any, any> {
+class SearchFilter extends Component<ISearchFilterProps, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      termValue: ""
+      termValue: "",
+      results: []
     };
   }
 
   componentDidMount() {
     this.props.searchService.getResults().subscribe((results: any[]) => {
-      this.props.handleResChange(results);
+      this.handleResChange(results);
     });
   }
 
-  onChangeBookFromParams = (e: any) => {
+  onChangeParams = (e: any) => {
     const term: string = e.target.value;
     this.setState({
       termValue: term
@@ -24,23 +26,25 @@ class SearchFilter extends Component<any, any> {
 
   handleResultsClick = (e: any) => {
     this.setState({
-      termValue: ""
+      termValue: "",
+      results: []
     });
-    this.props.handleSearchFilterClick(e);
+    this.props.handleSelectedValue(this.state.results[e.target.dataset.index]);
+  };
+
+  handleResChange = (res: any[]) => {
+    this.setState({
+      results: res
+    });
   };
 
   render() {
-    const { termValue } = this.state;
-    const { results } = this.props;
+    const { termValue, results } = this.state;
 
     return (
       <section>
         <p>Search for a book with author or title:</p>
-        <input
-          onChange={this.onChangeBookFromParams}
-          value={termValue}
-          type="text"
-        />
+        <input onChange={this.onChangeParams} value={termValue} type="text" />
         <ul className="search-filter-list">
           {results.map((ob: any, index: number) => (
             <li
