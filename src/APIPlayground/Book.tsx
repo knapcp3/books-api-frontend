@@ -15,9 +15,7 @@ class Book extends Component<any, any> {
       );
     }
 
-    return (
-        <div className="m-card">Book Not Found!</div>
-    );
+    return <div className="m-card">Book Not Found!</div>;
   }
 }
 
